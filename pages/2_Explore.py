@@ -1,6 +1,6 @@
 import streamlit as st
-from io import load_weather
-from charts import chart_dashboard
+from utils.io import load_weather
+from charts.charts import chart_dashboard
 
 st.set_page_config(page_title="Explore", layout="wide")
 df = load_weather()
