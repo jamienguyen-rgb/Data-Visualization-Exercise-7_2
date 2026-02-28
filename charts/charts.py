@@ -111,7 +111,7 @@ def chart_dashboard(df: pd.DataFrame) -> alt.Chart:
 
 def explain_wind_vs_temp(df: pd.DataFrame) -> alt.Chart:
     return (
-        alt.Chart(load_weather())
+        alt.Chart(df)
         .mark_circle(opacity=0.45)
         .encode(
             x=alt.X("wind:Q", title="wind (mph)"),
@@ -125,9 +125,9 @@ def explain_wind_vs_temp(df: pd.DataFrame) -> alt.Chart:
     )
 
 def dashboard_precipitation_over_time(df: pd.DataFrame) -> alt.Chart:
-    monthly = load_weather().groupby(
+    monthly = df.groupby(
             ["year", "month", "month_name"])['precipitation'].sum().reset_index()
-    years = sorted(load_weather()["year"].unique())
+    years = sorted(df["year"].unique())
     month_order = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
 
     w_select = alt.selection_point(
@@ -147,7 +147,7 @@ def dashboard_precipitation_over_time(df: pd.DataFrame) -> alt.Chart:
         .transform_filter(w_select)
         .properties(height=260)
         )
-    hist = alt.Chart(load_weather()).mark_bar(
+    hist = alt.Chart(df).mark_bar(
         ).encode(
             x=alt.X("precipitation:Q", bin=alt.Bin(maxbins=30), title="Precipitation"),
             y=alt.Y("count():Q", title="Days"),
