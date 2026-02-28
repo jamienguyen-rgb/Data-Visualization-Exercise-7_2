@@ -1,7 +1,7 @@
 import streamlit as st
 import altair as alt
-from io import load_weather
-from charts import (
+from utils.io import load_weather
+from charts.charts import (
     base_theme,
     chart_hook_temp_over_time,
     chart_context_seasonality,
