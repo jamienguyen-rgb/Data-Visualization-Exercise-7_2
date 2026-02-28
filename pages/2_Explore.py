@@ -16,6 +16,7 @@ st.write("- Filter to one weather type (e.g., `sun`, `rain`)—does the temperat
 st.write("- Brush a specific year—do extremes cluster in particular periods?")
 st.write("- Compare histogram shape across weather types—what changes most: center, spread, or tails?")
 
+
 st.write("Use interaction to validate and extend the story—focus on one year, then zoom into a time window.")
 
 st.altair_chart(dashboard_precipitation_over_time(df), use_container_width=True)
