@@ -118,7 +118,7 @@ def explain_wind_vs_temp(df: pd.DataFrame) -> alt.Chart:
             y=alt.Y("temp_max:Q", title="Daily max temp (°C)"),
             tooltip=[
                 "date:T",
-                alt.Tooltip("precipitation:Q", format=".2f"),
+                alt.Tooltip("wind:Q", format=".2f"),
                 alt.Tooltip("temp_max:Q", format=".1f")],
         )
         .properties(height=320)
